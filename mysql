@@ -1,0 +1,7 @@
+# change user password
+GRANT ALL PRIVILEGES ON *.* TO 'debian-sys-maint'@'localhost' IDENTIFIED BY 'PASS';
+FLUSH PRIVILEGES;
+
+# default mysql network parameters for developers + iptables rules
+bind-address           = 0.0.0.0
+skip-name-resolve

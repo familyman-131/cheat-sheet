@@ -1,0 +1,13 @@
+FTP="$(which ftp)"
+FTPU="ftp-user"
+FTPP="ftp-passw"
+FTPS="ftp-serv"
+
+DUMPFILE=mysql-$NOW.tar.gz
+$FTP -n $FTPS <<END_SCRIPT
+quote USER $FTPU
+quote PASS $FTPP
+cd $FTPD
+put $DUMPFILE
+quit
+END_SCRIPT

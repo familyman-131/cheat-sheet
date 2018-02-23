@@ -1,0 +1,44 @@
+add ip's from file to iptables
+#!/bin/bash
+for x in $(cat ip_list.txt)
+do
+    iptables -A INPUT -s $x -m comment --comment "paste comment here" -j ACCEPT
+done
+Where your ip_list.txt file would just look like
+1.1.1.1
+2.2.2.2
+3.3.3.3 etc
+or variant with checking ip's in current iptables list
+#!/bin/bash
+for i in $(cat ip_list.txt)
+do
+    /sbin/iptables -L -n -v | grep -q "${i}"
+    RETVAL=$?
+    if [ $RETVAL -ne 0 ]; then
+     /sbin/iptables -A INPUT -s "${i}" -m comment --comment "paste comment here" -j DROP
+    fi
+done
+
+# /etc/iptables/rules.v4 for developers
+*filter
+:INPUT ACCEPT [7326:580239]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [5011:18667387]
+-A INPUT -i lo -p tcp -m tcp --dport 3306 -j ACCEPT
+-A INPUT -s 176.36.180.48/32 -p tcp -m tcp --dport 3306 -j ACCEPT
+-A INPUT -s 95.67.46.34/32 -p tcp -m tcp --dport 3306 -j ACCEPT
+-A INPUT -s 95.67.95.254/32 -p tcp -m tcp --dport 3306 -j ACCEPT
+-A INPUT -s 95.67.46.34/32 -p tcp -m tcp --dport 3306 -j ACCEPT
+-A INPUT -s 95.67.95.254/32 -p tcp -m tcp --dport 3306 -j ACCEPT
+-A INPUT -s 82.193.118.154/32 -p tcp -m tcp --dport 3306 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 3306 -j DROP
+-A INPUT -p icmp -m icmp --icmp-type 13 -j DROP
+-A INPUT -p icmp -m icmp --icmp-type 14 -j DROP
+COMMIT
+ 
+#iptables for port 80 -> 8080
+#Requests from outside
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080
+#Requests from localhost
+iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 80 -j REDIRECT --to-ports 8080
+

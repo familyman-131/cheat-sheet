@@ -1,0 +1,23 @@
+# get database parameters from config
+# this lines probably needed to be ajust
+DB_CONFIG="/path/to/config.php"
+## LARAVEL
+#DB_NAME=`grep -m 1 DB_DATABASE ${DB_CONFIG} | sed s/DB_DATABASE=//`
+#DB_USER=`grep -m 1 DB_USERNAME ${DB_CONFIG} | sed s/DB_USERNAME=//`
+#DB_PASS=`grep -m 1 DB_PASSWORD ${DB_CONFIG} | sed s/DB_PASSWORD=//`
+## MODX - sed remove all between single quotes
+#DB_NAME=`grep -m 1 dbase ${DB_CONFIG}  | sed "s/.*'\(.*\)'.*/\1/g"`
+#DB_USER=`grep -m 1 database_user ${DB_CONFIG} | sed "s/.*'\(.*\)'.*/\1/g"`
+#DB_PASS=`grep -m 1 database_password ${DB_CONFIG} | sed "s/.*'\(.*\)'.*/\1/g"`
+## SYMPHONY
+#DB_NAME=$(grep -m 1 sylius.database.name: ${DB_CONFIG} | sed s/sylius.database.name:\ // | sed -e 's/^[ \t]*//')
+#DB_USER=$(grep -m 1 sylius.database.user: ${DB_CONFIG} | sed s/sylius.database.user:\ // | sed -e 's/^[ \t]*//')
+#DB_PASS=$(grep -m 1 sylius.database.password: ${DB_CONFIG} | sed s/sylius.database.password:\ // | sed -e 's/^[ \t]*//')
+## Redmine
+#DB_NAME=$(grep -m 1 database: ${DB_CONFIG} | sed s/database:\ // | sed -e 's/^[ \t]*//')
+#DB_USER=$(grep -m 1 username: ${DB_CONFIG} | sed s/username:\ // | sed -e 's/^[ \t]*//')
+#DB_PASS=$(grep -m 1 password: ${DB_CONFIG} | sed s/password:\ // | sed -e 's/^[ \t]*//')
+## OPENCART
+#DB_NAME=`grep -m 1 DB_DATABASE ${DB_CONFIG} | awk '{print $2}' | sed "s/.*'\(.*\)'.*/\1/g"`
+#DB_USER=`grep -m 1 DB_USERNAME ${DB_CONFIG} | awk '{print $2}' | sed "s/.*'\(.*\)'.*/\1/g"`
+#DB_PASS=`grep -m 1 DB_PASSWORD ${DB_CONFIG} | awk '{print $2}' | sed "s/.*'\(.*\)'.*/\1/g"`

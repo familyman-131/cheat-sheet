@@ -1,0 +1,5 @@
+exclude top directories from archive
+tar -zcvf test.tar.gz -C  /path/to/dir/ .
+or
+tar -zcvf test.tar.gz -C  /path/to/dir/ dir
+
