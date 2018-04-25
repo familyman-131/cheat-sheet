@@ -1,3 +1,9 @@
+# add user and database with same name
+CREATE DATABASE $username;
+CREATE USER '$username'@'%' IDENTIFIED BY '$password';
+GRANT ALL PRIVILEGES ON $username.* TO '$username'@'%';
+FLUSH PRIVILEGES;
+
 # change user password
 GRANT ALL PRIVILEGES ON *.* TO 'debian-sys-maint'@'localhost' IDENTIFIED BY 'PASS';
 FLUSH PRIVILEGES;
