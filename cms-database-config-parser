@@ -1,6 +1,10 @@
 # get database parameters from config
 # this lines probably needed to be ajust
 DB_CONFIG="/path/to/config.php"
+## WORDPRESS
+#DB_NAME=`grep -m 1 DB_NAME ${DB_CONFIG}  | sed "s/.*'\(.*\)'.*/\1/g"`
+#DB_USER=`grep -m 1 DB_USER ${DB_CONFIG} | sed "s/.*'\(.*\)'.*/\1/g"`
+#DB_PASS=`grep -m 1 DB_PASSWORD ${DB_CONFIG} | sed "s/.*'\(.*\)'.*/\1/g"`
 ## LARAVEL
 #DB_NAME=`grep -m 1 DB_DATABASE ${DB_CONFIG} | sed s/DB_DATABASE=//`
 #DB_USER=`grep -m 1 DB_USERNAME ${DB_CONFIG} | sed s/DB_USERNAME=//`
