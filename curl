@@ -1,0 +1,2 @@
+# direct check https connection
+curl -sv   --resolve example.com:443:159.69.74.238 https://example.com
