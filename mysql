@@ -1,3 +1,5 @@
+select host, user, password from mysql.user;
+
 # add user and database with same name
 CREATE DATABASE $username;
 CREATE USER '$username'@'%' IDENTIFIED BY '$password';
