@@ -1,0 +1,4 @@
+find . -type d -exec chmod 775 {} \;
+find . -type f -exec chmod 664 {} \;
+# fast way to delete a lot of files
+find . -type f  -mtime +30 -delete
