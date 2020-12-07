@@ -1,3 +1,4 @@
+# list mysql users
 select host, user, password from mysql.user;
 
 # add user and database with same name
