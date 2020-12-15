@@ -1,6 +1,10 @@
 # list mysql users
 select host, user, password from mysql.user;
 
+# show tables
+use dbname;
+show tables;
+
 # add user and database with same name
 CREATE DATABASE $username;
 CREATE USER '$username'@'%' IDENTIFIED BY '$password';
